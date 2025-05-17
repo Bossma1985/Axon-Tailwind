@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamiento de Vértigos y Mareos - Axón Fisioterapia</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans transition-all duration-300">
+    <!-- Navegación -->
+    <nav class="bg-white shadow-md fixed w-full z-10 transition-all duration-300" role="navigation" aria-label="Navegación principal">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="../index.html">
+                        <img src="../img/axon-logo.png" alt="Axón Fisioterapia" class="h-10" loading="lazy">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html#inicio" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Inicio</a>
+                    <a href="../index.html#nosotros" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Nosotros</a>
+                    <a href="../index.html#tratamientos" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Tratamientos</a>
+                    <a href="../index.html#testimonios" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Testimonios</a>
+                    <a href="../index.html#ubicacion" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Ubicación</a>
+                    <a href="../index.html#contacto" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Contacto</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú de navegación">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Menú móvil -->
+            <div id="mobile-menu" class="md:hidden hidden py-2" role="menu">
+                <a href="../index.html#inicio" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Inicio</a>
+                <a href="../index.html#nosotros" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Nosotros</a>
+                <a href="../index.html#tratamientos" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Tratamientos</a>
+                <a href="../index.html#testimonios" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Testimonios</a>
+                <a href="../index.html#ubicacion" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Ubicación</a>
+                <a href="../index.html#contacto" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido del tratamiento -->
+    <section class="pt-24 pb-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <!-- Barra lateral con otros tratamientos -->
+                <div class="md:w-1/4 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-gray-50 rounded-lg p-6 shadow-sm sticky top-24">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-600">Otros tratamientos</h3>
+                        <ul class="space-y-2">
+                            <li class="text-gray-700 hover:text-blue-600 transition-all duration-300">
+                                <a href="../index.html#tratamientos">← Volver a todos los tratamientos</a>
+                            </li>
+                            <li class="border-t border-gray-200 my-3"></li>
+                            <!-- Tratamientos relacionados -->
+                            <li><a href="migranas-cefaleas.html" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Migrañas y cefaleas</a></li>
+                            <li><a href="electroterapia-avanzada.html" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Electroterapia avanzada</a></li>
+                            <li><a href="osteopatia.html" class="text-gray-700 hover:text-blue-600 transition-all duration-300">Osteopatía</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contenido principal -->
+                <div class="md:w-3/4">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Tratamiento de Vértigos y Mareos</h1>
+                    
+                    <div class="mb-8">
+                        <img src="../img/tratamientos/tratamiento-placeholder.jpg" alt="Tratamiento de Vértigos y Mareos" class="w-full h-64 object-cover rounded-lg shadow-md" loading="lazy">
+                    </div>
+                    
+                    <div class="prose max-w-none">
+                        <h2 class="text-2xl font-semibold mb-3 text-blue-600 relative transition-transform duration-300">
+                            ¿En qué consiste?
+                            <span class="block w-16 h-1 bg-blue-600 mt-2 rounded-full transition-all duration-300"></span>
+                        </h2>
+                        <p class="mb-4 text-gray-700">
+                            El tratamiento de vértigos y mareos en fisioterapia se centra en abordar los problemas del sistema vestibular (responsable del equilibrio) mediante técnicas específicas de rehabilitación vestibular. Este enfoque terapéutico está diseñado para ayudar al sistema nervioso central a compensar los déficits de equilibrio y reducir la sensación de mareo o inestabilidad.
+                        </p>
+                        
+                        <h2 class="text-2xl font-semibold mb-3 mt-8 text-blue-600 relative transition-transform duration-300">
+                            ¿Para qué se utiliza?
+                            <span class="block w-16 h-1 bg-blue-600 mt-2 rounded-full transition-all duration-300"></span>
+                        </h2>
+                        <p class="mb-4 text-gray-700">
+                            Este tratamiento es especialmente efectivo para personas que sufren de:
+                        </p>
+                        <ul class="list-disc pl-5 mb-6 text-gray-700">
+                            <li class="mb-2">Vértigo posicional paroxístico benigno (VPPB)</li>
+                            <li class="mb-2">Neuritis vestibular</li>
+                            <li class="mb-2">Enfermedad de Ménière</li>
+                            <li class="mb-2">Mareos cervicogénicos (originados en el cuello)</li>
+                            <li class="mb-2">Problemas de equilibrio tras un traumatismo craneal</li>
+                            <li class="mb-2">Inestabilidad en adultos mayores</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-semibold mb-3 mt-8 text-blue-600 relative transition-transform duration-300">
+                            ¿Cómo se realiza?
+                            <span class="block w-16 h-1 bg-blue-600 mt-2 rounded-full transition-all duration-300"></span>
+                        </h2>
+                        <p class="mb-4 text-gray-700">
+                            El tratamiento incluye diversas técnicas según la causa específica del vértigo o mareo:
+                        </p>
+                        <ul class="list-disc pl-5 mb-6 text-gray-700">
+                            <li class="mb-2"><strong>Maniobras de reposicionamiento:</strong> Para el VPPB, utilizamos maniobras como Epley o Semont para recolocar los cristales del oído interno.</li>
+                            <li class="mb-2"><strong>Ejercicios de habituación:</strong> Ayudan al cerebro a adaptarse a los movimientos que provocan mareo, reduciendo progresivamente los síntomas.</li>
+                            <li class="mb-2"><strong>Entrenamiento del equilibrio:</strong> Ejercicios específicos para mejorar la estabilidad y prevenir caídas.</li>
+                            <li class="mb-2"><strong>Terapia manual cervical:</strong> Para casos donde el origen está relacionado con problemas en el cuello.</li>
+                            <li class="mb-2"><strong>Ejercicios oculomotores:</strong> Mejoran la coordinación entre los ojos y el sistema vestibular.</li>
+                        </ul>
+                        
+                        <h2 class="text-2xl font-semibold mb-3 mt-8 text-blue-600 relative transition-transform duration-300">
+                            Resultados esperados
+                            <span class="block w-16 h-1 bg-blue-600 mt-2 rounded-full transition-all duration-300"></span>
+                        </h2>
+                        <p class="mb-4 text-gray-700">
+                            Los pacientes que siguen un programa completo de rehabilitación vestibular suelen experimentar:
+                        </p>
+                        <ul class="list-disc pl-5 mb-6 text-gray-700">
+                            <li class="mb-2">Reducción significativa o eliminación del vértigo y mareos</li>
+                            <li class="mb-2">Mejor estabilidad y equilibrio</li>
+                            <li class="mb-2">Disminución del miedo a caerse</li>
+                            <li class="mb-2">Mejor calidad de vida y recuperación de actividades cotidianas</li>
+                            <li class="mb-2">Menor dependencia de medicamentos</li>
+                        </ul>
+                        <p class="mb-4 text-gray-700">
+                            La duración del tratamiento varía según la causa y gravedad del problema, pero muchos pacientes notan mejoras significativas en 3-6 sesiones, con resultados óptimos tras 8-12 sesiones.
+                        </p>
+                        
+                        <div class="bg-blue-50 p-6 rounded-lg mt-8">
+                            <h3 class="text-xl font-semibold mb-3 text-blue-600">¿Necesitas más información?</h3>
+                            <p class="mb-4 text-gray-700">
+                                Nuestros fisioterapeutas especializados en trastornos vestibulares estarán encantados de evaluarte y crear un plan de tratamiento personalizado para tu caso específico.
+                            </p>
+                            <a href="../index.html#contacto" class="inline-block bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300">Solicitar cita</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Axón Fisioterapia</h3>
+                    <img src="../img/axon-logo.png" alt="Axón Fisioterapia" class="h-12 mb-4" loading="lazy">
+                    <p class="mb-4">Tecnología avanzada y profesionales expertos para tu bienestar físico.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61564189864759&mibextid=LQQJ4d&rdid=6RaTzitUbSIauDdt&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FKnxFSxN9oc3vhfHK%2F%3Fmibextid%3DLQQJ4d#" target="_blank" class="text-white hover:text-blue-300 transition-all duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/axon.fisioterapia/" target="_blank" class="text-white hover:text-blue-300 transition-all duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.668.25 1.235.6 1.8 1.165.565.565.915 1.132 1.165 1.8.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.165 1.8c-.565.565-1.132.915-1.8 1.165-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.8-1.165 4.902 4.902 0 01-1.165-1.8c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.165-1.8A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+                    <p class="mb-2">Calle Principal 123</p>
+                    <p class="mb-2">28001 Madrid, España</p>
+                    <p class="mb-2">Teléfono: 91 123 45 67</p>
+                    <p class="mb-2">Email: info@axonfisioterapia.com</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Horario</h3>
+                    <p class="mb-2">Lunes a Jueves:</p>
+                    <p class="mb-4">08:30 - 13:00 y 15:30 - 20:00</p>
+                    <p class="mb-2">Viernes:</p>
+                    <p class="mb-2">08:30 - 13:00 y 15:30 - 19:00</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center">
+                <p>&copy; 2024 Axón Fisioterapia. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 focus:outline-none z-50" aria-label="Volver arriba">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html> 

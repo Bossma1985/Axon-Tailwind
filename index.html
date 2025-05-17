@@ -5,14 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axón - Clínica de Fisioterapia</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Estilos optimizados para el carrusel -->
+    <style>
+        /* Optimizaciones para el carrusel */
+        #carousel-track {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        
+        #carousel-track img {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimizeQuality;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            #carousel-track {
+                transition: none !important;
+            }
+        }
+        
+        /* Animación para el indicador de carga */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        /* Estilos para el video en la sección Nosotros */
+        #nosotros-video-container {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            width: 100%;
+            border-radius: 0.5rem;
+            background-color: black;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        #nosotros-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center; /* Centrar el video */
+            background-color: black;
+        }
+        
+        #nosotros-video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%; /* Ajustar para mostrar mejor la recepción */
+        }
+        
+        /* Asegurar que el botón de reproducción se vea bien */
+        #nosotros-play-button {
+            transition: transform 0.2s ease, opacity 0.3s ease;
+            will-change: transform;
+        }
+        
+        #nosotros-play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    </style>
 </head>
 <body class="bg-gray-50 font-sans transition-all duration-300">
     <!-- Navegación -->
-    <nav class="bg-white shadow-md fixed w-full z-10 transition-all duration-300">
+    <nav class="bg-white shadow-md fixed w-full z-10 transition-all duration-300" role="navigation" aria-label="Navegación principal">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="img/axon-logo.png" alt="Axón Fisioterapia" class="h-10">
+                    <img src="img/axon-logo.png" alt="Axón Fisioterapia" class="h-10" loading="lazy">
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-gray-700 hover:text-blue-600 transition">Inicio</a>
@@ -23,7 +96,7 @@
                     <a href="#contacto" class="text-gray-700 hover:text-blue-600 transition">Contacto</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-700">
+                    <button id="menu-toggle" class="text-gray-700" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú de navegación">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -31,13 +104,13 @@
                 </div>
             </div>
             <!-- Menú móvil -->
-            <div id="mobile-menu" class="md:hidden hidden py-2">
-                <a href="#inicio" class="block py-2 text-gray-700 hover:text-blue-600">Inicio</a>
-                <a href="#nosotros" class="block py-2 text-gray-700 hover:text-blue-600">Nosotros</a>
-                <a href="#tratamientos" class="block py-2 text-gray-700 hover:text-blue-600">Tratamientos</a>
-                <a href="#testimonios" class="block py-2 text-gray-700 hover:text-blue-600">Testimonios</a>
-                <a href="#ubicacion" class="block py-2 text-gray-700 hover:text-blue-600">Ubicación</a>
-                <a href="#contacto" class="block py-2 text-gray-700 hover:text-blue-600">Contacto</a>
+            <div id="mobile-menu" class="md:hidden hidden py-2" role="menu">
+                <a href="#inicio" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Inicio</a>
+                <a href="#nosotros" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Nosotros</a>
+                <a href="#tratamientos" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Tratamientos</a>
+                <a href="#testimonios" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Testimonios</a>
+                <a href="#ubicacion" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Ubicación</a>
+                <a href="#contacto" class="block py-2 text-gray-700 hover:text-blue-600" role="menuitem">Contacto</a>
             </div>
         </div>
     </nav>
@@ -62,11 +135,32 @@
             <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Conoce nuestra filosofía, instalaciones y el equipo de profesionales que hará posible tu recuperación.</p>
             <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2">
-                    <div class="relative rounded-lg shadow-lg overflow-hidden">
-                        <video class="w-full h-full rounded-lg" controls>
-                            <source src="videos/Video de WhatsApp 2025-02-17 a las 20.37.12_493f77fa.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
+                    <div id="nosotros-video-container" class="relative overflow-hidden">
+                        <div class="relative w-full h-full">
+                            <!-- Imagen de portada y botón de reproducción -->
+                            <img src="img/portsda_video.jpg" alt="Recepción clínica Axón Fisioterapia" 
+                                class="w-full h-full absolute top-0 left-0" 
+                                style="z-index: 2; cursor: pointer;"
+                                id="nosotros-video-thumbnail">
+                            
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 bg-opacity-80 rounded-full p-4 shadow-lg flex items-center justify-center" 
+                                style="z-index: 3; cursor: pointer; width: 60px; height: 60px;"
+                                id="nosotros-play-button">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z"></path>
+                                </svg>
+                            </div>
+                            
+                            <!-- Video oculto inicialmente -->
+                            <video class="w-full h-full absolute top-0 left-0" 
+                                id="nosotros-video"
+                                controls 
+                                preload="metadata" 
+                                style="z-index: 1;">
+                                <source src="videos/Video de WhatsApp 2025-02-17 a las 20.37.12_493f77fa.mp4" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>
+                        </div>
                     </div>
                 </div>
                 <div class="md:w-1/2">
@@ -169,6 +263,110 @@
             
             <div class="mt-12 text-center">
                 <a href="#contacto" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300">Consulta tu caso</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrusel de Terapias -->
+    <section class="py-16 bg-white overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-center mb-3 text-blue-600 relative transition-transform duration-300">
+                Galería de Terapias
+                <span class="block w-24 h-1 bg-blue-600 mx-auto mt-3 rounded-full transition-all duration-300"></span>
+            </h3>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Conoce nuestras instalaciones y los diferentes tratamientos que ofrecemos.</p>
+            
+            <div class="relative">
+                <!-- Contenedor del carrusel -->
+                <div id="carousel-container" class="overflow-hidden relative rounded-xl" style="height: 350px;">
+                    <!-- Indicador de carga -->
+                    <div id="carousel-loader" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                    
+                    <div id="carousel-track" class="flex transition-transform will-change-transform h-full" style="transform: translateX(0%);">
+                        <!-- Imágenes del carrusel -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/ahmet-kurt-2v-5eWBJPX8-unsplash.jpg" alt="Terapia 1" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/benjamin-wedemeyer-1rdB14ttWgQ-unsplash.jpg" alt="Terapia 2" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/marc-zeman-uLWW09LLG04-unsplash.jpg" alt="Terapia 3" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/mr-lee-f4RBYsY2hxA-unsplash.jpg" alt="Terapia 4" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/nightingale-home-nurse-qMQ1gvgMrd0-unsplash.jpg" alt="Terapia 5" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/sincerely-media-wGFibXDQlBI-unsplash.jpg" alt="Terapia 6" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/terry-shultz-p-t-EQ-53WaTNC4-unsplash.jpg" alt="Terapia 7" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/toa-heftiba-hBLf2nvp-Yc-unsplash.jpg" alt="Terapia 8" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/tsquared-lab-SxEn-LRygFI-unsplash.jpg" alt="Terapia 9" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <img src="img/carrusel_terapias/yury-kirillov-Y1JKxNFwZx4-unsplash.jpg" alt="Terapia 10" 
+                                class="w-full h-full object-cover rounded-lg shadow-md" 
+                                width="400" height="320" 
+                                style="object-position: center;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles de navegación -->
+                <button id="prev-button" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 p-2 rounded-full shadow-md text-blue-600 z-10 focus:outline-none transition-all duration-300" aria-label="Imagen anterior">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button id="next-button" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 p-2 rounded-full shadow-md text-blue-600 z-10 focus:outline-none transition-all duration-300" aria-label="Imagen siguiente">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                
+                <!-- Indicadores -->
+                <div class="flex justify-center mt-4">
+                    <div id="carousel-indicators" class="flex space-x-2" role="tablist" aria-label="Indicadores de carrusel">
+                        <!-- Los indicadores se generarán mediante JavaScript -->
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -321,7 +519,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div>
                     <h3 class="text-2xl font-semibold mb-4">Axón Fisioterapia</h3>
-                    <img src="img/axon-logo.png" alt="Axón Fisioterapia" class="h-12 mb-4">
+                    <img src="img/axon-logo.png" alt="Axón Fisioterapia" class="h-12 mb-4" loading="lazy">
                     <p class="mb-4">Tecnología avanzada y profesionales expertos para tu bienestar físico.</p>
                     <div class="flex space-x-4">
                         <a href="https://www.facebook.com/profile.php?id=61564189864759&mibextid=LQQJ4d&rdid=6RaTzitUbSIauDdt&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FKnxFSxN9oc3vhfHK%2F%3Fmibextid%3DLQQJ4d#" target="_blank" class="text-white hover:text-blue-300 transition-all duration-300">
@@ -354,11 +552,63 @@
                 </div>
             </div>
             
+            <!-- Formulario de contacto -->
+            <div class="mt-12 bg-gray-900 p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold mb-6 text-white text-center">Solicita tu cita</h3>
+                <form id="contact-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-1">Nombre completo</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors" required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-300 mb-1">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-300 mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors" required>
+                    </div>
+                    <div>
+                        <label for="treatment" class="block text-gray-300 mb-1">Tratamiento de interés</label>
+                        <select id="treatment" name="treatment" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="">Selecciona un tratamiento</option>
+                            <option value="fisioterapia-deportiva">Fisioterapia deportiva</option>
+                            <option value="rehabilitacion">Rehabilitación</option>
+                            <option value="osteopatia">Osteopatía</option>
+                            <option value="electroterapia">Electroterapia</option>
+                            <option value="puncion-seca">Punción seca</option>
+                            <option value="otros">Otros (especificar en mensaje)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-300 mb-1">Mensaje</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors" required></textarea>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="privacy" name="privacy" class="mr-2 h-5 w-5 rounded text-blue-600 focus:ring-blue-500" required>
+                        <label for="privacy" class="text-gray-300 text-sm">Acepto la <a href="#" class="text-blue-400 hover:underline">política de privacidad</a> y el tratamiento de mis datos</label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" id="submit-form" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none">Enviar solicitud</button>
+                    </div>
+                    <div id="form-status" class="text-center hidden"></div>
+                </form>
+            </div>
+            
             <div class="border-t border-gray-700 mt-10 pt-6 text-center">
                 <p>&copy; 2024 Axón Fisioterapia. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 focus:outline-none z-50" aria-label="Volver arriba">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
 
     <script src="js/script.js"></script>
 </body>
