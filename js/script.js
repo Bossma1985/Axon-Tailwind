@@ -25,8 +25,54 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animación para el fondo del hero
     const heroBackground = document.getElementById('hero-background');
     if (heroBackground) {
-        // Configuración inicial para el gradiente animado ya está en CSS
+        // Aplicar clase para la animación de gradiente desde JavaScript
+        heroBackground.style.background = 'linear-gradient(45deg, #3490dc, #38b2ac)';
+        heroBackground.style.backgroundSize = '400% 400%';
+        heroBackground.style.animation = 'gradientAnimation 15s ease infinite';
     }
+    
+    // Definir la animación de gradiente usando una hoja de estilo dinámica
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Añadir efecto hover a los títulos h2 de secciones
+    const sectionTitles = document.querySelectorAll('section h2');
+    sectionTitles.forEach(title => {
+        title.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            const span = this.querySelector('span');
+            if (span) {
+                span.style.width = '40px';
+            }
+        });
+        
+        title.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            const span = this.querySelector('span');
+            if (span) {
+                span.style.width = '24px';
+            }
+        });
+    });
+    
+    // Efecto hover para tarjetas de tratamiento
+    const treatmentCards = document.querySelectorAll('.treatment-card');
+    treatmentCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
     
     // Animaciones de entrada para elementos cuando son visibles
     const observerOptions = {
@@ -38,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-5');
                 observer.unobserve(entry.target);
             }
         });
@@ -47,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todos los elementos que queremos animar
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(element => {
+        element.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-500', 'ease-in-out');
         observer.observe(element);
     });
     
@@ -64,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scroll para enlaces internos
+    // Smooth scroll para enlaces internos usando clases de Tailwind
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
