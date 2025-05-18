@@ -64,6 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Efecto hover para títulos h3
+    const h3Titles = document.querySelectorAll('.h3-title');
+    h3Titles.forEach(title => {
+        title.addEventListener('mouseenter', function() {
+            this.classList.add('shadow-md');
+            this.style.transform = 'translateY(-1px)';
+        });
+        
+        title.addEventListener('mouseleave', function() {
+            this.classList.remove('shadow-md');
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
     // Efecto hover para tarjetas de tratamiento
     const treatmentCards = document.querySelectorAll('.treatment-card');
     treatmentCards.forEach(card => {
@@ -112,6 +126,13 @@ document.addEventListener('DOMContentLoaded', function() {
         content.forEach(el => {
             el.classList.add('fade-in');
         });
+    });
+    
+    // Añadir clase fade-in a elementos h3
+    const h3Elements = document.querySelectorAll('h3.h3-title');
+    h3Elements.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
     });
     
     // Smooth scroll para enlaces internos usando clases de Tailwind
