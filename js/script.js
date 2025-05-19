@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     
     // Añadir efecto hover a los títulos h2 de secciones
-    const sectionTitles = document.querySelectorAll('section h2');
+    const sectionTitles = document.querySelectorAll('.h2-section, .h2-treatment, section h2');
     sectionTitles.forEach(title => {
         title.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';
